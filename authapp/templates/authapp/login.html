@@ -1,0 +1,21 @@
+{% extends 'authapp/base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<h2 class="text-center">Login</h2>
+
+<div class="col-md-6 offset-md-3">
+<form method="POST">
+    {% csrf_token %}
+    <div class="mb-3">
+      <input type="text" class="form-control" placeholder="Enter username" name="username">
+    </div>
+    <div class="mb-3">
+      <input type="password" class="form-control" placeholder="Enter password" name="password">
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+  </form>
+</div>
+
+{% endblock %}

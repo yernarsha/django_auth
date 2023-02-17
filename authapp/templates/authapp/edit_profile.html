@@ -1,0 +1,33 @@
+{% extends 'authapp/base.html' %}
+
+{% block title %}Edit profile{% endblock %}
+
+{% block content %}
+
+<h2 class="text-center">Edit profile</h2>
+
+<form method="POST" action="{% url 'edit_profile' %}">
+    {% csrf_token %}
+
+    {% if form.errors %}  
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <p>Your form has errors...</p>
+        {% for field in form %}
+            {% if field.errors %}
+            {{ field.errors}}
+            {% endif %}
+        {% endfor %}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>  
+
+    {% endif %}
+
+    {{ form.as_p }}
+
+    <input type="submit" value="Save" class="btn btn-primary">
+</form>
+<br/><br/>
+<p><small><a href="{% url 'change_password' %}">Click here</a> to change your password</small></p>
+<br/><br/>
+
+{% endblock %}
